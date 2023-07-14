@@ -1,16 +1,16 @@
 NAME	=	ircProxy
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror
-SRCS	=	
+SRCS	=	src/main.cpp src/class/Proxy.cpp
 IFLAGS	=	-Iinc/
 OBJS	=	$(SRCS:.cpp=.o)
 RM		=	rm -rf
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+	$(CC) $(CFLAGS) ${IFLAGS} -c $< -o $(<:.cpp=.o)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
+	$(CC) $(CFLAGS) ${IFLAGS} $^ -o $(NAME)
 
 all:		$(NAME)
 

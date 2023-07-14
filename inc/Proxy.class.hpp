@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Proxy.class.cpp                                    :+:      :+:    :+:   */
+/*   Proxy.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eloevenb <eloevenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 01:45:11 by eloevenb          #+#    #+#             */
-/*   Updated: 2023/07/14 02:40:09 by eloevenb         ###   ########.fr       */
+/*   Updated: 2023/07/14 03:19:20 by eloevenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ class Proxy
 				virtual const char	*what() const throw();
 		};
 
-		Proxy(int clientPort, int serverPort, std::string & destinationIp) throw(SocketCreationFailureException, SocketBindFailureException);
-		Proxy(const Proxy & rhs) throw(SocketCreationFailureException, SocketBinFailureException);
-		Proxy & operator=(const Proxy & rhs) throw(SocketCreationFailureException, SocketBinFailureException);
+		Proxy(int clientPort, int serverPort, const char *destinationIp);
+		Proxy(const Proxy & rhs);
+		Proxy & operator=(const Proxy & rhs);
 		~Proxy();
 
 		int	getClientSocketFd() const;
 		int	getServerSocketFd() const;
 
-		void	listen(int backlog=1) throw(SocketListenFailureException);
+		void	forward();
 		
 	private:
 		Proxy();
